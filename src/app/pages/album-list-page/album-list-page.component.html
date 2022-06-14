@@ -1,0 +1,40 @@
+<div class="row">
+    <h2>{{title}}</h2>
+</div>
+
+<div class="row">
+    <form [formGroup]="fg" (ngSubmit)="searchAlbums()">
+        <div class="input-group mb-3">
+            <input 
+                type="number" 
+                class="form-control" 
+                placeholder="Put user id" 
+                aria-label="get albums" 
+                aria-describedby="button-search"
+                formControlName="userId">
+            <button 
+                class="btn btn-outline-secondary" 
+                type="submit" 
+                id="button-search">Search
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="row" *ngIf="albums">
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let album of albums; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{album.title}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> 
+
